@@ -1,0 +1,40 @@
+﻿
+@model List<Newsletter>
+ 
+
+ 
+
+ 
+
+
+<div class="card">
+            <div class="card-header">
+               <h1 class="bg-light"> Subscribers  </h1>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th width="800%">Emails</th>
+                 
+                  <th width="20%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                  @foreach ( var item in Model)
+                    {
+                     <tr>
+                      <td width="80%">@item.Email</td>
+                         
+                      <td  width="20%">
+                          <a asp-action="Delete" class="btn btn-default"  asp-route-id="@item.Id">Delete</a>
+                      </td>
+                    </tr>
+                    }
+            
+            </tbody>
+        </table>
+            </div>
+            <!-- /.card-body -->
+          </div>

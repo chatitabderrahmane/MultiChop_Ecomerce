@@ -1,0 +1,37 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+<form method="post"  asp-action="DeletePost" enctype="multipart/form-data">
+
+<div asp-validation-summary="All" class="mb-3 bg-danger"  >
+
+</div>
+<div class="mb-3">
+  <input  hidden asp-for="Id" />
+  <label for="exampleFormControlInput1" class="form-label">Name</label>
+  <input disabled type="text" asp-for="Name" class="form-control"  placeholder=" ">
+  <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Min Description</label>
+    <textarea disabled class=" form-control" asp-for="MiniDescription" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <span asp-validation-for="MiniDescription" class="text-danger"></span>
+</div>
+<div class="mb-3">
+   <label for="" class="form-label">Image</label>
+   <img src="/Areas/Admin/Images/Categories/@Model.Image" />
+ </div> 
+
+<button type="submit" class="btn btn-primary">Delete</button>
+<button asp-action="Index" class="btn btn-default">Back To List </button>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

@@ -1,0 +1,74 @@
+﻿ @model homeVM  
+ <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/Customer">Home</a>
+                    <span class="breadcrumb-item active">Contact</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Register Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Register
+                 </span></h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="contact-form bg-light p-30">
+                    <div id="success"></div>
+                    <form method="post"  asp-action="Register">
+                        <div asp-validation-summary="All" class="bg-danger">
+
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" name="Name" asp-for="RegisterVM.Name"  placeholder="Your Name"
+                                required="required" data-validation-required-message="Please enter your Name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                  
+                        <div class="control-group">
+                            <input type="email" class="form-control"name="Email"  asp-for="RegisterVM.Email"  placeholder="Email*"
+                                required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control"name="PhoneNumber"  asp-for="RegisterVM.PhoneNumber"  placeholder="Your  Phone * "
+                                required="required" data-validation-required-message="Please enter your phone" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                         <div class="control-group">
+                            <input type="text" class="form-control"name="Adress"  asp-for="RegisterVM.Adress"  placeholder="Adress*"
+                                required="required" data-validation-required-message="Please enter your Adress" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control"name="City"  asp-for="RegisterVM.City"  placeholder="City*"
+                                required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control"name="Password" asp-for="RegisterVM.Password"   placeholder="Password"
+                                required="required" data-validation-required-message="Please enter Password" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" name="ConfirmPassword" asp-for="RegisterVM.ConfirmPassword"  placeholder="Confirm Password"
+                                required="required" data-validation-required-message="Please enter a some Password" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                   
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit"  > 
+                                Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>

@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+@model homeVM
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MultiShop - Online Shop Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+ 
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+        <link href="~/lib/FontAwesome/all.min.css" rel="stylesheet"/>
+    <!-- Libraries Stylesheet -->
+    <link href="~/Areas/Customer/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/Areas/Customer/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Areas/Customer/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+            <div class="col-lg-4">
+                 
+            </div>
+            <div class="col-lg-4 col-6 text-left">
+                <form asp-action="Search" method="post">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="keywords" placeholder="Search for products">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-dark mb-30">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a href="/home/" class="text-decoration-none">
+                    <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span>
+                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
+                </a>
+            </div>                      
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
+                        <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="/Home" class="nav-item nav-link active">Home</a>
+                            <a href="/home/Products" class="nav-item nav-link">Shop</a> 
+                            <a href="/Contact/index" class="nav-item nav-link">Contact</a>
+                             @*<a href="/Admin" class="nav-item nav-link">Admin</a>*@
+                             @if( User.Identity.IsAuthenticated)
+                                 {
+                                   <a class="nav-item nav-link"  href="#">  Hello @User.Identity.Name</a> <span>/</span>
+                                  <a asp-action="Logout"class="nav-item nav-link" asp-controller="Account" >Logout</a>
+                                 }else
+                                 {
+                                    <a asp-action="Login"class="nav-item nav-link" asp-controller="Account" >Login</a> <span>/</span>
+                                    <a asp-action="Register"class="nav-item nav-link" asp-controller="Account" >Register</a>
+                          
+                                 }
+
+                        </div>
+                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                         
+                            <a href="/Home/ShopingCart" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle"
+                                    style="padding-bottom: 2px;">@ViewBag.count</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+    @RenderBody()
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                @foreach (var item in Model.SocieteInfos)
+                {
+                 <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
+                 <p class="mb-4">@Html.Raw(item.MessageInfo)</p>
+                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>@item.Adress</p>
+                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@item.Email</p>
+                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>@item.phone</p>
+                }
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="/Home"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href=" /Products"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-secondary" href=" /Contact/index"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="/Home/index"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-secondary" href="/Contact/index"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
+                         <form asp-action="Newsletter" method="post">
+                            <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="Email" placeholder="Your Email Address">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                             
+                       
+                        <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                         @foreach (var item in Model.SocialMedia)
+                         {
+                        <div class="d-flex">
+                            <a class="btn btn-primary btn-square mr-2" href="@item.twitter"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="@item.facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="@item.linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-primary btn-square" href="@item.instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                          }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-primary" href="">Created by Abderrahmane Chatit @DateTime.Now</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="~/Areas/Customer/img/payments.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <!--font awesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/brands.min.js" integrity="sha512-1e+6G7fuQ5RdPcZcRTnR3++VY2mjeh0+zFdrD580Ell/XcUw/DQLgad5XSCX+y2p/dmJwboZYBPoiNn77YAL5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Areas/Customer/lib/easing/easing.min.js"></script>
+    <script src="~/Areas/Customer/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="~/Areas/Customer/mail/jqBootstrapValidation.min.js"></script>
+    <script src="~/Areas/Customer/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/Areas/Customer/js/main.js"></script>
+  
+
+</body>
+
+</html>

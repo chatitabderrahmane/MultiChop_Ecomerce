@@ -1,0 +1,76 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<form method="post"  asp-action="Create" enctype="multipart/form-data"  >
+
+<div asp-validation-summary="All" class="mb-3 bg-danger"  >
+
+</div>
+<div class="mb-3">
+ 
+  <label for="exampleFormControlInput1" class="form-label">Name</label>
+  <input type="text" asp-for="Name" class="form-control"  placeholder=" ">
+  <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Min Description</label>
+    <textarea  class="form-control" asp-for="Description"  rows="3"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="mb-3">
+   <label for="exampleFormControlInput1" class="form-label">Image 1</label>
+  <input type="file" name="file" asp-for="image1" class="form-control"  placeholder=" ">
+  <span asp-validation-for="image1" class="text-danger"></span>
+  
+</div>
+<div class="mb-3">
+   <label for="exampleFormControlInput1" class="form-label">Image 2</label>
+  <input type="file" name="file2" asp-for="image2" class="form-control"  placeholder=" ">
+  <span asp-validation-for="image2" class="text-danger"></span>
+  
+</div>
+<div class="mb-3">
+   <label for="exampleFormControlInput1" class="form-label">old Price</label>
+  <input type="number" asp-for="Old_Price" class="form-control"  placeholder=" ">
+  <span asp-validation-for="Old_Price" class="text-danger"></span>
+  
+</div>
+<div class="mb-3">
+   <label for="exampleFormControlInput1" class="form-label">New Price</label>
+  <input type="number" asp-for="New_Price" class="form-control"  placeholder=" ">
+  <span asp-validation-for="New_Price" class="text-danger"></span>
+</div>
+<div class="mb-3">
+   <label for="exampleFormControlInput1" class="form-label">Stock</label>
+  <input type="radio" asp-for="Stock"    value="valid" /> in Stock
+  <input type="radio" asp-for="Stock" value="invalid" /> not in stock
+
+</div>
+<div class="mb-3">
+   <label for="exampleFormControlInput1" class="form-label">Category Name</label>
+   <select asp-for="CatId" asp-items="ViewBag.Categories">
+       <option disabled  >----choose Category-----</option>
+   </select>
+  <span asp-validation-for="CatId" class="text-danger"></span>
+</div>
+<button asp-action="Index" class="btn btn-default">Back To List </button>
+<button  asp-action="CreateAndNext" class="btn btn-secondary">Next</button>
+<button type="submit" class="btn btn-success">Terminer</button>
+</form>
+
+@section Scripts{
+    @{
+ <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'advlist autolink lists link image charmap preview anchor pagebreak',
+      toolbar_mode: 'floating',
+    });
+  </script>
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

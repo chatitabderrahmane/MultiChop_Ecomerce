@@ -1,0 +1,33 @@
+﻿@model E_comerce_project.Models.ViewsModel.ProImages
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<form method="post"  asp-action="Create" enctype="multipart/form-data">
+
+ 
+<div class="mb-3">
+   
+   
+  <label asp-for="Product" class="form-label">Name Products</label>
+  <select asp-for="Product.ProId"    asp-items="ViewBag.images">
+
+  </select>
+</div>
+ 
+<div class="mb-3">
+  <label   class="form-label" asp-for="Images"> Images </label>
+   <input type="file" asp-for="Images"   multiple />
+    <span asp-validation-for="Images" class="text-danger"></span>
+</div>
+<button type="submit" class="btn btn-primary">Create</button>
+<button asp-action="Index" class="btn btn-default">Back To List </button>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

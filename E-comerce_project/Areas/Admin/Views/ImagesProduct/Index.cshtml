@@ -1,0 +1,45 @@
+﻿@*
+@model List< E_comerce_project.Models.ViewsModel.homeVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List images Category</h1>
+
+
+
+<div class="card">
+            <div class="card-header">
+
+              <a asp-action="Create" class="btn btn-primary"> Create images </a>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th width="30%">Name</th>
+                  <th width="30%">Images</th>
+                                               
+                </tr>
+                </thead>
+                <tbody>
+                  @foreach ( var item in Model)
+                    {
+                     <tr>
+                          <td width="30%"> <span class="text-primary" > @item.Products.Select(q=>q.Name)  </span> </td>
+                          
+                           @foreach ( var subitem in Model.Where(x=>x.ProductImages.Select(q=>q.ProId)==item.Products.Select(q=>q.ProId)))
+                           {   
+                             
+                                <td width="40%"> <img src="/Areas/Admin/Images/Products/@subitem.ProductImages.Select(x=>x.ProductImage)" style="width:100px" class="img-bordered" />  </td>          
+                           }
+                     </tr >      
+                    }
+            
+            </tbody>
+        </table>
+            </div>
+            <!-- /.card-body -->
+          </div>*@

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List Cateegory</h1>
+
+
+
+<div class="card">
+            <div class="card-header">
+
+              <a asp-action="Create" class="btn btn-primary"> Create new Category </a>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th width="30%">Name</th>
+                  <th  width="30%">  Image</th>
+                  <th width="40%">Min Description</th>
+                  <th width="30%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                  @foreach ( var item in Model)
+                    {
+                     <tr>
+                      <td width="30%">@item.Name</td>
+                      <td  width="30%"> <img  style="width:30px"  class="img-bordered" src="/Areas/Admin/Images/Categories/@item.Image"/> </td>
+                       
+                      <td width="40%">@Html.Raw(item.MiniDescription)</td>   
+                      <td  width="30%">
+                          <a asp-action="Edit" class="btn btn-primary " asp-route-id="@item.Id">Edit</a>
+                          <a asp-action="Delete" class="btn btn-danger"  asp-route-id="@item.Id">Delete </a>
+                      </td>
+                    </tr>
+                    }
+            
+            </tbody>
+        </table>
+            </div>
+            <!-- /.card-body -->
+          </div>

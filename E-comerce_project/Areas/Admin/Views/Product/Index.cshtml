@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List Product</h1>
+
+
+
+<div class="card">
+            <div class="card-header">
+
+              <a asp-action="Create" class="btn btn-primary"> Create new Product </a>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th >Name</th>
+                   <th  > Images </th>
+                  <th >Description</th>
+                  <th >Old Price</th>
+                  <th  >  New Price</th>
+                  <th> Stock</th>
+
+                  <th >Category Name</th>
+              
+                  <th width="30%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                  @foreach ( var item in Model)
+                    {
+                     <tr>
+                      <td width="30%">@item.Name</td>
+                        <th width="30%">
+                        <img src="/Areas/Admin/Images/Products/@item.image1" style="width:200px" class="display-1 img-bordered" /> 
+                          <img src="/Areas/Admin/Images/Products/@item.image2" style="width:200px" class="display-1 img-bordered" />    
+                      </th>
+            
+                      <td  >@Html.Raw(item.Description)</td>   
+                      <td  >@item.Old_Price</td>
+                      <td >@item.New_Price</td>
+                      <td  >@item.Stock</td>
+                      <td  >@item.Category.Name</td>  
+        
+                          <td  width="30%">
+                          <a asp-action="Edit" class="btn btn-Primary " asp-route-id="@item.ProId" >Edit</a>
+                          <a asp-action="Delete" class="btn btn-danger"  asp-route-id="@item.ProId">Delete </a>
+                      </td>
+                    </tr>
+                    }
+            
+            </tbody>
+        </table>
+            </div>
+            <!-- /.card-body -->
+          </div>

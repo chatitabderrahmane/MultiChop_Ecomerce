@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @model E_comerce_project.Models.ViewsModel.OrderVM
+    <meta name="viewport" content="width=device-width" />
+    <title>OrderCompleted</title>
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+ 
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+        <link href="~/lib/FontAwesome/all.min.css" rel="stylesheet"/>
+    <!-- Libraries Stylesheet -->
+    <link href="~/Areas/Customer/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/Areas/Customer/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Areas/Customer/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="row text-center">
+       <i class=".text-success fa-solid fa-circle-check"></i>
+        <h2>  Order with success Thanks !!</h2>
+        <p>execute in @DateTime.Now</p>
+    </div>
+    <div class="row">
+        <h2>Your Order</h2>
+            <ul class="list-group  sticky-top">
+        @foreach (var item in Model.ShopingsCarts)
+                {
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0"> <strong> @item.Product.Name</strong>  x  @item.Qty  </h6>
+                        <small class="text-muted"> </small>
+                    </div>
+                    <span class="text-muted">$@(item.Qty * item.Product.New_Price )</span>
+                    <span   hidden>@(ViewBag.Subtotal += item.Qty * item.Product.New_Price)</span> 
+                </li>
+
+                }
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>   Total (USD)</span>
+                    <strong>$@ViewBag.Subtotal</strong>
+                </li>
+               </ul>
+    </div>   
+    <div class="row">
+          <h2>Billing Adress</h2>
+              <div class="row">
+                    <h2><strong>@Model.ApplicationUser.Name</strong></h2>
+                    <p>@Model.ApplicationUser.Adress </p>
+                    <p>@Model.ApplicationUser.City</p>
+                </div>
+      </div>
+
+</body>
+</html>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Areas/Customer/lib/easing/easing.min.js"></script>
+    <script src="~/Areas/Customer/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="~/Areas/Customer/mail/jqBootstrapValidation.min.js"></script>
+    <script src="~/Areas/Customer/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/Areas/Customer/js/main.js"></script>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

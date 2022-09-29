@@ -1,0 +1,58 @@
+﻿@model homeVM
+<!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/Customer">Home</a>
+                    <span class="breadcrumb-item active">Login</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+ 
+
+
+    <!-- Login Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Login
+                 </span></h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-7  mb-5">
+                <div class="contact-form bg-light p-30">
+                    <div id="success"></div>
+                    <form method="post" asp-action="Login">
+                        <div class="bg-danger " asp-validation-summary="All">
+
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control" name="Email" asp-for="LoginVM.Email"  placeholder="Your Email"
+                                required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="password" class="form-control"name="Password"  asp-for="LoginVM.Password" placeholder="Your password"
+                                required="required" data-validation-required-message="Password incorect " />
+                            <p class="help-block text-danger"></p>
+                       </div>
+                       <div class="form-check mb-0">
+                        <input class="form-check-input me-2" type="checkbox" name="RememberMe"  asp-for="LoginVM.RememberMe"  id="form2Example3" />
+                        <label class="form-check-label" for="form2Example3">
+                          Remember me
+                        </label>
+                       </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit"  > 
+                                Login</button>
+                        </div>
+                     
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <!-- Login End -->
+      

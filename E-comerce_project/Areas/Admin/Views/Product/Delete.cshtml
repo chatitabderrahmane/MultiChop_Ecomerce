@@ -1,0 +1,58 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+}
+<form method="post"  asp-action="DeletePost"  >
+ 
+<div class="mb-3">
+  <input  hidden asp-for="ProId" />
+  <label for="exampleFormControlInput1" class="form-label">Name</label>
+  <input disabled type="text" asp-for="Name" class="form-control"  placeholder=" ">
+ </div>
+ <div class="mb-3">
+ 
+  <label for=" " class="form-label">Description</label>
+  <input disabled type="text" asp-for="Name" class="form-control"  placeholder=" ">
+ </div>
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">  Description</label>
+    <textarea disabled class=" form-control" asp-for="Description" id="exampleFormControlTextarea1" rows="3"></textarea>
+ </div>
+  <div class="mb-3">
+ 
+  <label for=" " class="form-label">Old_Price</label>
+  <input disabled type="text" asp-for="Old_Price" class="form-control"  placeholder=" ">
+
+ </div>
+  <div class="mb-3">
+ 
+  <label for=" " class="form-label">New_Price</label>
+  <input disabled type="text" asp-for="New_Price" class="form-control"  placeholder=" ">
+ </div>
+ <div class="mb-3">
+  <label for=" " class="form-label">Stock</label>
+  <input disabled type="text" asp-for="Stock" class="form-control"  placeholder=" ">
+ </div>
+<div class="mb-3">
+   <label for="exampleFormControlInput1" class="form-label">Category Name</label>
+   <select asp-for="CatId" asp-items="ViewBag.Categories">
+       <option disabled  >----choose Category-----</option>
+   </select>
+ </div>
+
+<div class="mb-3">
+   <label for="" class="form-label">Image 1</label>
+   <img src="/Areas/Admin/Images/Products/@Model.image1" />
+ </div> 
+ <div class="mb-3">
+   <label for="" class="form-label">Image 2</label>
+   <img src="/Areas/Admin/Images/Products/@Model.image2" />
+ </div> 
+
+<button type="submit" class="btn btn-primary">Delete</button>
+<button asp-action="Index" class="btn btn-default">Back To List </button>
+</form>
+
+
+ 
